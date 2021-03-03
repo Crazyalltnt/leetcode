@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 01 两数之和
+ * No.1 两数之和
  * https://leetcode-cn.com/problems/two-sum/
  * <p>
  * 给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出和为目标值的那两个整数，并返回它们的数组下标。
