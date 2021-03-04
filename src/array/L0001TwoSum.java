@@ -29,7 +29,7 @@ import java.util.Map;
  * @version v1.0
  * @date 2021/3/3 12:09
  */
-public class L01TwoSum {
+public class L0001TwoSum {
     public static void main(String[] args) {
         int[] nums = {2, 7, 11, 15};
         int target = 9;
