@@ -23,7 +23,7 @@ import java.util.Arrays;
  * @version v1.0
  * @date 2021/3/3 21:21
  */
-public class L02RemoveDuplicates {
+public class L026RemoveDuplicates {
     public static void main(String[] args) {
         // int[] nums = {1, 1, 2};
         int[] nums = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
