@@ -125,4 +125,43 @@ public class L0042TrappingRainWater {
 
         return result;
     }
+
+    /**
+     * 接雨水 使用栈
+     * 时间复杂度 O(n)
+     * 空间复杂度 O(1)
+     *
+     * @param height 高度数组
+     * @return 雨水量
+     */
+    public static int trap4(int[] height) {
+        if (height == null || height.length == 0) {
+            return 0;
+        }
+
+        int left = 0;
+        int right = height.length - 1;
+        int leftMax = 0;
+        int rightMax = 0;
+        int result = 0;
+
+        while (left < right) {
+            if (height[left] < height[right]) {
+                if (height[left] >= leftMax) {
+                    leftMax = height[left];
+                } else {
+                    result += (leftMax - height[left]);
+                }
+                left++;
+            } else {
+                if (height[right] >= rightMax) {
+                    rightMax = height[right];
+                } else {
+                    result += (rightMax - height[right]);
+                }
+                right--;
+            }
+        }
+        return result;
+    }
 }
