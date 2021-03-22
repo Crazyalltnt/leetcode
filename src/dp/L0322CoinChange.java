@@ -1,5 +1,7 @@
 package dp;
 
+import java.util.Arrays;
+
 /**
  * No.322 零钱兑换
  * https://leetcode-cn.com/problems/coin-change
@@ -78,7 +80,16 @@ public class L0322CoinChange {
         }
     }
 
-    public static int coinChange(int[] coins, int amount) {
+    /**
+     * 兑换零钱 记忆化搜索
+     * 时间复杂度 O(SN)
+     * 空间复杂度 O(S)
+     *
+     * @param coins 硬币数组 n种面值
+     * @param amount 金额 S
+     * @return 硬币最小数量
+     */
+    public static int coinChange2(int[] coins, int amount) {
         if (coins == null || coins.length == 0 || amount < 0) {
             return -1;
         }
@@ -120,5 +131,28 @@ public class L0322CoinChange {
         }
         count[rem - 1] = min == Integer.MAX_VALUE ? -1 : min;
         return count[rem - 1];
+    }
+
+    /**
+     * 零钱兑换 动态规划
+     * 时间复杂度 O()
+     * 空间复杂度 O()
+     *
+     * @param coins 硬币数组
+     * @param amount 金额
+     * @return 硬币最小数量
+     */
+    public static int coinChange(int[] coins, int amount) {
+        int[] dp = new int[amount + 1];
+        Arrays.fill(dp, Integer.MAX_VALUE);
+        dp[0] = 0;
+        for (int i = 1; i <= amount; i++) {
+            for (int coin : coins) {
+                if (coin <= i) {
+                    dp[i] = Math.min(dp[i], dp[i - coin] + 1);
+                }
+            }
+        }
+        return dp[amount] > amount ? -1 : dp[amount];
     }
 }
