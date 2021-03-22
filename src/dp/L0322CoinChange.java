@@ -35,14 +35,14 @@ package dp;
  */
 public class L0322CoinChange {
     public static void main(String[] args) {
-        // int[] coins = {1, 2, 5};
-        // int amount = 11;
-        int[] coins =  {2};
-        int amount = 3;
+        int[] coins = {1, 2, 5};
+        int amount = 11;
+        // int[] coins =  {2};
+        // int amount = 3;
         System.out.println(coinChange(coins, amount));
     }
 
-    static int res = Integer.MAX_VALUE;
+    static int res0 = Integer.MAX_VALUE;
 
     /**
      * 零钱兑换 暴力递归 超时
@@ -51,7 +51,7 @@ public class L0322CoinChange {
      * @param amount 总金额
      * @return 硬币最小数量
      */
-    public static int coinChange(int[] coins, int amount) {
+    public static int coinChange0(int[] coins, int amount) {
         if (coins.length == 0) {
             return -1;
         }
@@ -59,10 +59,10 @@ public class L0322CoinChange {
         findWay(coins, amount, 0);
 
         // 如果没有任何一种硬币组合能组成总金额，返回 -1。
-        if (res == Integer.MAX_VALUE) {
+        if (res0 == Integer.MAX_VALUE) {
             return -1;
         }
-        return res;
+        return res0;
     }
 
     public static void findWay(int[] coins, int amount, int count) {
@@ -70,11 +70,55 @@ public class L0322CoinChange {
             return;
         }
         if (amount == 0) {
-            res = Math.min(res, count);
+            res0 = Math.min(res0, count);
         }
 
         for (int coin : coins) {
             findWay(coins, amount - coin, count + 1);
         }
+    }
+
+    public static int coinChange(int[] coins, int amount) {
+        if (coins == null || coins.length == 0 || amount < 0) {
+            return -1;
+        }
+
+        if (amount == 0) {
+            return 0;
+        }
+
+        return coinChange(coins, amount, new int[amount]);
+    }
+
+    /**
+     * 记忆化搜索 重载
+     *
+     * @param coins 硬币数组
+     * @param rem 金额
+     * @param count 记忆数组
+     * @return 硬币最小数量
+     */
+    public static int coinChange(int[] coins, int rem, int[] count) {
+        if (coins == null || coins.length == 0 || rem < 0) {
+            return -1;
+        }
+
+        if (rem == 0) {
+            return 0;
+        }
+
+        if (count[rem - 1] != 0) {
+            return count[rem - 1];
+        }
+
+        int min = Integer.MAX_VALUE;
+        for (int coin : coins) {
+            int res = coinChange(coins, rem - coin, count);
+            if (res >= 0 && res < min) {
+                min = res + 1;
+            }
+        }
+        count[rem - 1] = min == Integer.MAX_VALUE ? -1 : min;
+        return count[rem - 1];
     }
 }
