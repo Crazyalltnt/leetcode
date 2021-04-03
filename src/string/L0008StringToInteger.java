@@ -1,5 +1,8 @@
 package string;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * No.8 字符串转换整数
  * https://leetcode-cn.com/problems/string-to-integer-atoi
@@ -101,13 +104,15 @@ public class L0008StringToInteger {
         // String s = "+-12";
         // String s = "+-";
         // String s = "00000-42a1234";
-        String s = "  0000000000012345678";
-        // String s = "20000000000000000000";
-        System.out.println(myAtoi(s));
+        // String s = "  0000000000012345678";
+        String s = "20000000000000000000";
+        System.out.println(myAtoi3(s));
     }
 
     /**
-     * 字符串转整数
+     * 字符串转整数 截取子串法
+     * 时间复杂度 O(N)
+     * 空间复杂度 O(1)
      *
      * @param s 字符串
      * @return 整数
@@ -160,5 +165,110 @@ public class L0008StringToInteger {
             }
         }
         return (int)(num * first);
+    }
+
+    /**
+     * 字符串转整数 按位累加法
+     * 时间复杂度 O(N)
+     * 空间复杂度 O(1)
+     *
+     * @param s 字符串
+     * @return 整数
+     */
+    public static int myAtoi2(String s) {
+        if (s == null || s.length() == 0) {
+            return 0;
+        }
+
+        int start = 0;
+        while (start < s.length() && s.charAt(start) == ' ') {
+                start++;
+        }
+
+        if (start == s.length() || !(Character.isDigit(s.charAt(start)) || s.charAt(start) == '+' || s.charAt(start) == '-')) {
+            return 0;
+        }
+
+        long num = 0;
+        long first;
+        if (s.charAt(start) == '-') {
+            first = -1;
+            start++;
+        } else if (s.charAt(start) == '+'){
+            first = 1;
+            start++;
+        } else {
+            first = 1;
+        }
+
+        for (int i = start; i < s.length(); i++) {
+            if (Character.isDigit(s.charAt(i))) {
+                num = num * 10 + (s.charAt(i) - '0');
+            } else {
+                break;
+            }
+
+            if (num * first > Integer.MAX_VALUE) {
+                return Integer.MAX_VALUE;
+            } else if (num * first < Integer.MIN_VALUE) {
+                return Integer.MIN_VALUE;
+            }
+        }
+        return (int)(num * first);
+    }
+
+    /**
+     * 字符串转整数 自动机法
+     * 时间复杂度 O(N)
+     * 空间复杂度 O(1)
+     *
+     * @param s 字符串
+     * @return 整数
+     */
+    public static int myAtoi3(String s) {
+        Automaton automaton = new Automaton();
+        int length = s.length();
+        for (int i = 0; i < length; ++i) {
+            automaton.get(s.charAt(i));
+        }
+        return (int) (automaton.sign * automaton.ans);
+    }
+}
+
+/**
+ * 自动机类
+ */
+class Automaton {
+    public int sign = 1;
+    public long ans = 0;
+    private String state = "start";
+    private Map<String, String[]> table = new HashMap<String, String[]>() {{
+        put("start", new String[]{"start", "signed", "in_number", "end"});
+        put("signed", new String[]{"end", "end", "in_number", "end"});
+        put("in_number", new String[]{"end", "end", "in_number", "end"});
+        put("end", new String[]{"end", "end", "end", "end"});
+    }};
+
+    public void get(char c) {
+        state = table.get(state)[get_col(c)];
+        if ("in_number".equals(state)) {
+            ans = ans * 10 + c - '0';
+            ans = sign == 1 ? Math.min(ans, (long) Integer.MAX_VALUE) : Math.min(ans, -(long) Integer.MIN_VALUE);
+        } else if ("signed".equals(state)) {
+            sign = c == '+' ? 1 : -1;
+        }
+    }
+
+    private int get_col(char c) {
+        if (c == ' ') {
+            return 0;
+        }
+        if (c == '+' || c == '-') {
+            return 1;
+        }
+        if (Character.isDigit(c)) {
+            return 2;
+        }
+        return 3;
     }
 }
