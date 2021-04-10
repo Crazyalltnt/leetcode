@@ -127,7 +127,7 @@ public class L0042TrappingRainWater {
     }
 
     /**
-     * 接雨水 使用栈
+     * 接雨水 双指针
      * 时间复杂度 O(n)
      * 空间复杂度 O(1)
      *
