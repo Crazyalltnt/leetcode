@@ -30,7 +30,7 @@ public class L0206ReverseLinkedList {
      * @param head 头节点
      * @return 新头节点
      */
-    public static ListNode reverseList(ListNode head) {
+    public static ListNode reverseList2(ListNode head) {
         ListNode prev = null;
         ListNode cur = head;
         ListNode next;
@@ -42,5 +42,24 @@ public class L0206ReverseLinkedList {
              cur = next;
         }
         return prev;
+    }
+
+    /**
+     * 反转链表 递归
+     * 时间复杂度 O(N)
+     * 空间复杂度 O(1)
+     *
+     * @param head 头节点
+     * @return 新头节点
+     */
+    public static ListNode reverseList(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        ListNode newHead = reverseList(head.next);
+        head.next.next = head;
+        head.next = null;
+        return newHead;
     }
 }
