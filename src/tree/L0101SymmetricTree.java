@@ -1,5 +1,7 @@
 package tree;
 
+import jdk.nashorn.internal.ir.annotations.Ignore;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -34,7 +36,10 @@ import java.util.Queue;
  */
 public class L0101SymmetricTree {
     public static void main(String[] args) {
-
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(null);
+        System.out.println(queue.size());
+        System.out.println(queue.poll());
     }
 
     /**
@@ -46,7 +51,11 @@ public class L0101SymmetricTree {
      * @return 是否对称
      */
     public boolean isSymmetric(TreeNode root) {
-        return check(root, root);
+        if (root == null) {
+            return true;
+        } else {
+            return check(root.left, root.right);
+        }
     }
 
     public boolean check(TreeNode p, TreeNode q) {
@@ -68,7 +77,11 @@ public class L0101SymmetricTree {
      * @return 是否对称
      */
     public boolean isSymmetric2(TreeNode root) {
-        return check2(root, root);
+        if (root == null) {
+            return true;
+        } else {
+            return check2(root.left, root.right);
+        }
     }
 
     public boolean check2(TreeNode u, TreeNode v) {
