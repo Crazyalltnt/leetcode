@@ -71,7 +71,7 @@ public class L0144BinaryTreePreorderTraversal {
     /**
      * 二叉树的前序遍历 Morris遍历
      * 时间复杂度 O(N)
-     * 空间复杂度 O(N)
+     * 空间复杂度 O(1)
      *
      * @param root 根结点
      * @return 前序遍历列表
