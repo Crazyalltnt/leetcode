@@ -67,7 +67,7 @@ public class L0093RestoreIpAddresses {
                 StringBuilder ipAddress = new StringBuilder();
                 for (int i = 0; i < SEG_COUNT; i++) {
                     ipAddress.append(segments[i]);
-                    if (segId != SEG_COUNT - 1) {
+                    if (i != SEG_COUNT - 1) {
                         ipAddress.append('.');
                     }
                 }
