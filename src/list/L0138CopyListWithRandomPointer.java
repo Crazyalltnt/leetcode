@@ -45,7 +45,7 @@ import java.util.Map;
  * @version v1.0
  * @date 2021/7/11 10:21
  */
-public class CopyListWithRandomPointer {
+public class L0138CopyListWithRandomPointer {
     public static void main(String[] args) {
 
     }
