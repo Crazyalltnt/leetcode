@@ -5,7 +5,7 @@
  * @version v1.0
  * @date 2021/7/12 10:21
  */
-public class DefinitionDataStructure {
+public class DefiniteDataStructure {
     public static void main(String[] args) {
 
     }
