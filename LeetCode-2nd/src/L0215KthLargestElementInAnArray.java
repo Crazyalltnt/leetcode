@@ -98,7 +98,7 @@ public class L0215KthLargestElementInAnArray {
     }
 
     /**
-     * 数组中的第K个最大元素 快速排序
+     * 数组中的第K个最大元素 堆排序
      * 时间复杂度 O(NlogN)
      * 空间复杂度 O(logN)
      *
