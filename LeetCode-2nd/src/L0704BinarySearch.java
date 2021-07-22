@@ -17,7 +17,7 @@ public class L0704BinarySearch {
      *
      * @param nums 数组
      * @param target 目标值
-     * @return 索引
+     * @return 下标
      */
     public int search(int[] nums, int target) {
         int left = 0, right = nums.length - 1;
