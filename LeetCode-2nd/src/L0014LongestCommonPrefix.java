@@ -105,7 +105,7 @@ public class L0014LongestCommonPrefix {
     }
 
     /**
-     * 最长公共前缀 分治
+     * 最长公共前缀 二分
      * 时间复杂度 O(MNlogM)
      * 空间复杂度 O(1)
      *
