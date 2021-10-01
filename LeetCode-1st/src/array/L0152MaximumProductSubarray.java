@@ -31,7 +31,6 @@ public class L0152MaximumProductSubarray {
             dpMin[i] = Math.min(nums[i], Math.min(dpMin[i - 1] * nums[i], dpMax[i - 1] * nums[i]));
         }
         int ans = dpMax[0];
-        System.out.println("ans = " + ans);
         for (int i = 1; i < n; i++) {
             ans = Math.max(ans, dpMax[i]);
         }
