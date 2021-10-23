@@ -5,7 +5,7 @@
  * @version v1.0
  * @date 2021/10/20 14:45
  */
-public class JZKthLargest {
+public class JZ54KthLargest {
     public static void main(String[] args) {
 
     }

@@ -5,7 +5,7 @@
  * @version v1.0
  * @date 2021/10/16 10:39
  */
-public class JZIsBalanced {
+public class JZ55IsBalanced2 {
     public static void main(String[] args) {
 
     }

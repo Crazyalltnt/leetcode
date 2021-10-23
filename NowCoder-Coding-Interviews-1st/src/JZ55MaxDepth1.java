@@ -8,7 +8,7 @@ import java.util.Queue;
  * @version v1.0
  * @date 2021/10/16 10:02
  */
-public class JZMaxDepth {
+public class JZ55MaxDepth1 {
     public static void main(String[] args) {
 
     }

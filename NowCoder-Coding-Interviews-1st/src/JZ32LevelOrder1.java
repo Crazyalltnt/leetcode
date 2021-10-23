@@ -9,7 +9,7 @@ import java.util.Queue;
  * @version v1.0
  * @date 2021/10/22 16:23
  */
-public class JZLevelOrder1 {
+public class JZ32LevelOrder1 {
     public static void main(String[] args) {
 
     }

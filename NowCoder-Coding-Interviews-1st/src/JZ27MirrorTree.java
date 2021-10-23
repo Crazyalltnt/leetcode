@@ -5,7 +5,7 @@
  * @version v1.0
  * @date 2021/10/22 15:22
  */
-public class JZMirrorTree {
+public class JZ27MirrorTree {
     public static void main(String[] args) {
 
     }

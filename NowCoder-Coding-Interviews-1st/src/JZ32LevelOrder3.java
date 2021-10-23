@@ -7,7 +7,7 @@ import java.util.*;
  * @version v1.0
  * @date 2021/10/18 10:25
  */
-public class JZLevelOrder3 {
+public class JZ32LevelOrder3 {
     public static void main(String[] args) {
 
     }

@@ -5,7 +5,7 @@
  * @version v1.0
  * @date 2021/10/21 9:49
  */
-public class JZIsSubStructure {
+public class JZ26IsSubStructure {
     public static void main(String[] args) {
 
     }

@@ -8,7 +8,7 @@ import java.util.LinkedList;
  * @version v1.0
  * @date 2021/10/15 16:03
  */
-public class JZBuildTree {
+public class JZ07BuildTree {
     public static void main(String[] args) {
 
     }
