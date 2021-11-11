@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * 剑指 Offer 68 - I. 二叉搜索树的最近公共祖先
+ * 剑指 Offer 68 - I. 二叉树的最近公共祖先
  *
  * @author Neil
  * @version v1.0
